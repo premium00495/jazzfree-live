@@ -1,0 +1,5 @@
+body { font-family: Arial, sans-serif; background: #f5f5f5; }
+.user-container { max-width: 400px; margin: 50px auto; padding: 20px; background: #fff; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+input { display: block; width: 100%; margin: 10px 0; padding: 10px; }
+button { padding: 10px 20px; margin: 5px 0; cursor: pointer; }
+.error-msg { color: red; }
