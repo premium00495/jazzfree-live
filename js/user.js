@@ -11,9 +11,24 @@ const activateBtn = document.getElementById('activateBtn');
 const premiumMsg = document.getElementById('premiumMsg');
 const watchSection = document.querySelector('.watch-section');
 
+function isValidEmail(email){
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+// Register
 registerBtn.addEventListener('click', () => {
-    const email = document.getElementById('userEmail').value;
-    const password = document.getElementById('userPassword').value;
+    const email = document.getElementById('userEmail').value.trim();
+    const password = document.getElementById('userPassword').value.trim();
+
+    if(!isValidEmail(email)){
+        authError.textContent = "Invalid email format!";
+        return;
+    }
+    if(password.length < 6){
+        authError.textContent = "Password must be at least 6 characters!";
+        return;
+    }
+
     createUserWithEmailAndPassword(auth, email, password)
         .then(userCredential => {
             const uid = userCredential.user.uid;
@@ -23,9 +38,16 @@ registerBtn.addEventListener('click', () => {
         .catch(err => authError.textContent = err.message);
 });
 
+// Login
 loginBtn.addEventListener('click', () => {
-    const email = document.getElementById('userEmail').value;
-    const password = document.getElementById('userPassword').value;
+    const email = document.getElementById('userEmail').value.trim();
+    const password = document.getElementById('userPassword').value.trim();
+
+    if(!isValidEmail(email)){
+        authError.textContent = "Invalid email format!";
+        return;
+    }
+
     signInWithEmailAndPassword(auth, email, password)
         .then(userCredential => {
             const uid = userCredential.user.uid;
@@ -40,6 +62,7 @@ loginBtn.addEventListener('click', () => {
         .catch(err => authError.textContent = err.message);
 });
 
+// Activate Premium
 activateBtn.addEventListener('click', () => {
     const codeInput = document.getElementById('premiumCode').value.trim();
     if(!codeInput) return;
@@ -55,8 +78,10 @@ activateBtn.addEventListener('click', () => {
     });
 });
 
+// Logout
 logoutBtn.addEventListener('click', () => signOut(auth).then(() => window.location.reload()));
 
+// UI functions
 function showPremiumSection() {
     premiumSection.style.display = 'block';
     logoutBtn.style.display = 'block';
