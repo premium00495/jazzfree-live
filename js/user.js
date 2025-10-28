@@ -15,11 +15,10 @@ function isValidEmail(email){
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
+// Register
 registerBtn.addEventListener('click', () => {
     const email = document.getElementById('userEmail').value.trim();
     const password = document.getElementById('userPassword').value.trim();
-
-    console.log("Email:", email, "Password:", password); // Debug
 
     if(!isValidEmail(email)){
         authError.textContent = "Invalid email format!";
@@ -39,11 +38,10 @@ registerBtn.addEventListener('click', () => {
         .catch(err => authError.textContent = err.message);
 });
 
+// Login
 loginBtn.addEventListener('click', () => {
     const email = document.getElementById('userEmail').value.trim();
     const password = document.getElementById('userPassword').value.trim();
-
-    console.log("Login Email:", email, "Password:", password); // Debug
 
     if(!isValidEmail(email)){
         authError.textContent = "Invalid email format!";
@@ -64,6 +62,7 @@ loginBtn.addEventListener('click', () => {
         .catch(err => authError.textContent = err.message);
 });
 
+// Activate Premium
 activateBtn.addEventListener('click', () => {
     const codeInput = document.getElementById('premiumCode').value.trim();
     if(!codeInput) return;
@@ -79,8 +78,10 @@ activateBtn.addEventListener('click', () => {
     });
 });
 
+// Logout
 logoutBtn.addEventListener('click', () => signOut(auth).then(() => window.location.reload()));
 
+// UI functions
 function showPremiumSection() {
     premiumSection.style.display = 'block';
     logoutBtn.style.display = 'block';
