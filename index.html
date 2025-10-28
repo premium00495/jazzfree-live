@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JazzFree Live</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="user-container">
+    <img src="assets/logo.png" alt="JazzFree Logo" class="logo">
+    <h2>Login / Register</h2>
+
+    <div class="auth-form">
+        <input type="email" id="userEmail" placeholder="Email">
+        <input type="password" id="userPassword" placeholder="Password">
+        <button id="loginBtn">Login</button>
+        <button id="registerBtn">Register</button>
+        <p id="authError" class="error-msg"></p>
+    </div>
+
+    <div class="premium-section" style="display:none;">
+        <h3>Activate Premium</h3>
+        <input type="text" id="premiumCode" placeholder="Enter Premium Code">
+        <button id="activateBtn">Activate</button>
+        <p id="premiumMsg"></p>
+    </div>
+
+    <div class="watch-section" style="display:none;">
+        <h3>Available Content</h3>
+        <ul id="contentList">
+            <li>Free Movie 1</li>
+            <li>Premium Movie 1 (Locked)</li>
+        </ul>
+    </div>
+
+    <button id="logoutBtn" style="display:none;">Logout</button>
+</div>
+
+<script type="module" src="js/user.js"></script>
+</body>
+</html>
